@@ -1,0 +1,117 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginActivity" >
+
+    <!-- Publish progress -->
+
+    <LinearLayout
+        android:id="@+id/login_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/login_status_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/login_progress_publishing"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <!-- Publish form -->
+
+    <ScrollView
+        android:id="@+id/publish_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top" >
+
+        <LinearLayout
+            style="@style/LoginFormContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:orientation="vertical" >
+
+			<TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/content_select_category" />
+
+			<Spinner
+			    android:id="@+id/categoryArticle"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:prompt="@string/content_select_category" />
+
+			<HorizontalScrollView 
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"	
+			    android:scrollbars="none"	    
+			    >
+			    <LinearLayout 			        
+			    	android:id="@+id/emotionList"
+			    	android:orientation="horizontal"
+			    	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:padding="5dp"
+			        />
+			</HorizontalScrollView>
+            <EditText
+                android:id="@+id/publish_content"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="top"
+                android:hint="@string/prompt_publish"
+                android:maxLength="150" />
+
+			<RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent" >
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/content_remain_word" />
+
+			    <Button
+			        android:id="@+id/publish_button"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_alignParentRight="true"
+			        android:layout_alignParentTop="true"
+			        android:paddingLeft="16dp"
+			        android:paddingRight="16dp"
+			        android:text="@string/action_publish" />
+
+			    <TextView
+			        android:id="@+id/remain_words"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_alignParentLeft="true"
+			        android:layout_alignParentTop="true"
+			        android:layout_marginLeft="81dp" />
+
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_alignParentTop="true"
+			        android:layout_toRightOf="@+id/remain_words"
+			        android:text="@string/content_remain_word_lastfix" />
+
+			</RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</merge>

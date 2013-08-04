@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    tools:context=".MainActivity"
+	android:background="#FFFFFF">
+    
+	<!-- Process progress -->
+
+    <LinearLayout
+        android:id="@+id/process_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/process_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/dialog_loading"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+	<ScrollView 
+	    android:id="@+id/dialog_action"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content">
+       
+		<LinearLayout
+	    	android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"	
+	    	android:padding="5dp"	 
+		    android:orientation="vertical"   
+		    >
+		    <RelativeLayout
+		    	android:layout_width="match_parent"
+		    	android:layout_height="match_parent"	
+			    >
+			     <TextView
+			    	android:id="@+id/score_title"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="16dp"
+		            android:fontFamily="sans-serif-light"
+		            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+			     <TextView
+			         android:id="@+id/score_btn"
+			         android:layout_width="wrap_content"
+			         android:layout_height="wrap_content"
+			         android:layout_alignParentRight="true"
+			         android:layout_alignParentTop="true"
+			         android:fontFamily="sans-serif-light"
+			         android:text="@string/dialog_give_score_btn"
+			         android:textAppearance="?android:attr/textAppearanceMedium"
+			         android:textColor="#607c8c" />
+
+			</RelativeLayout>
+			<LinearLayout
+		         android:layout_width="match_parent"
+		         android:layout_height="1dp"
+		         android:orientation="vertical"
+		         android:background="#FFFFFF"
+		         android:layout_marginBottom="2dp" />
+		    <LinearLayout
+		         android:id="@+id/score_list"
+		         android:layout_width="match_parent"
+		         android:layout_height="wrap_content"
+		         android:orientation="vertical" />
+
+	   </LinearLayout>
+	</ScrollView>
+</RelativeLayout>

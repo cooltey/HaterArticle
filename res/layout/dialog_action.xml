@@ -1,0 +1,148 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    tools:context=".MainActivity"
+	android:background="#FFFFFF">
+    
+	<!-- Process progress -->
+
+    <LinearLayout
+        android:id="@+id/process_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/process_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/dialog_processing"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+	<LinearLayout 
+	    android:id="@+id/dialog_action"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical">
+	
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/pos_btn"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentTop="true"
+	            android:layout_centerHorizontal="true"
+	            android:text="@string/dialog_pos_btn"
+	            android:textSize="50sp" />
+	
+	        <TextView
+	            android:id="@+id/dialog_pos_lastfix"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignBaseline="@+id/pos_btn"
+	            android:layout_alignBottom="@+id/pos_btn"
+	            android:layout_toRightOf="@+id/pos_btn"
+	            android:text="@string/dialog_pos_lastfix"
+	            android:layout_centerVertical="true"
+	            android:textSize="20sp" />
+	
+	        <TextView
+	            android:id="@+id/dialog_pos_prefix"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerVertical="true"
+	            android:layout_toLeftOf="@+id/pos_btn"
+	            android:text="@string/dialog_pos_prefix"
+	            android:textSize="20sp" />
+	
+	    </RelativeLayout>
+	
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/neg_btn"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentTop="true"
+	            android:layout_centerHorizontal="true"
+	            android:text="@string/dialog_neg_btn"
+	            android:textSize="50sp" />
+	
+	        <TextView
+	            android:id="@+id/dialog_neg_lastfix"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignBaseline="@+id/neg_btn"
+	            android:layout_alignBottom="@+id/neg_btn"
+	            android:layout_toRightOf="@+id/neg_btn"
+	            android:text="@string/dialog_neg_lastfix"
+	            android:layout_centerVertical="true"
+	            android:textSize="20sp" />
+	
+	        <TextView
+	            android:id="@+id/dialog_neg_prefix"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerVertical="true"
+	            android:layout_toLeftOf="@+id/neg_btn"
+	            android:text="@string/dialog_neg_prefix"
+	            android:textSize="20sp" />
+	
+	    </RelativeLayout>
+	    
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/comments_btn"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentTop="true"
+	            android:layout_centerHorizontal="true"
+	            android:text="@string/dialog_comments_btn"
+	            android:textSize="50sp" />
+	
+	        <TextView
+	            android:id="@+id/dialog_comments_prefix"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerVertical="true"
+	            android:layout_toLeftOf="@+id/comments_btn"
+	            android:text="@string/dialog_comments_prefix"
+	            android:textSize="20sp" />
+	
+	        <TextView
+	            android:id="@+id/dialog_comments_lastfix"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignBaseline="@+id/dialog_comments_prefix"
+	            android:layout_alignBottom="@+id/dialog_comments_prefix"
+	            android:layout_toRightOf="@+id/comments_btn"
+	            android:layout_centerVertical="true"
+	            android:text="@string/dialog_comments_lastfix"
+	            android:textSize="20sp" />
+	
+	    </RelativeLayout>
+	
+	</LinearLayout>
+</RelativeLayout>

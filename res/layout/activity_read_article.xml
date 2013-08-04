@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReadArticleActivity">
+	    
+    <ScrollView
+        android:id="@+id/article_zone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            style="@style/LoginFormContainer"
+        	android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="top" >
+			<LinearLayout 
+       		 	android:id="@+id/article_content"
+        		android:layout_width="match_parent"
+        		android:layout_height="wrap_content"
+        		android:orientation="vertical"
+	    		android:focusable="true"
+	    		android:focusableInTouchMode="true" 
+			    />			
+			<LinearLayout
+			    android:id="@+id/process_status"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="center"
+			    android:gravity="center"
+			    android:orientation="vertical"
+			    android:visibility="gone" >
+			
+			    <ProgressBar
+			        style="?android:attr/progressBarStyleLarge"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginBottom="8dp" 
+			        android:visibility="gone"/>
+			
+			    <TextView
+			        android:id="@+id/process_message"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginBottom="16dp"
+			        android:fontFamily="sans-serif-light"
+			        android:text="@string/dialog_loading"
+			        android:textAppearance="?android:attr/textAppearanceMedium" />
+			</LinearLayout>
+			<LinearLayout 
+       		 	android:id="@+id/reply_content"
+        		android:layout_width="match_parent"
+        		android:layout_height="wrap_content"
+            	android:orientation="vertical" 
+			    />
+        </LinearLayout>
+    </ScrollView>
+
+	<LinearLayout
+	    android:id="@+id/needLoginZone"
+	    style="@style/LoginFormContainer"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentRight="true"
+	    android:background="@drawable/corner_round"
+	    android:orientation="horizontal" >
+
+	    <TextView
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="16dp"
+	        android:layout_weight="0.80"
+	        android:textSize="18sp"
+	        android:text="@string/reply_need_login" />
+
+	    <Button
+	        android:id="@+id/login_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="16dp"
+	        android:paddingRight="16dp"
+	        android:text="@string/action_login" />
+	</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/replyTextZone"
+        style="@style/LoginFormContainer"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentRight="true"
+        android:background="@drawable/corner_round"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Spinner
+            android:id="@+id/emotionType"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/reply_input_content"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.88"
+            android:hint="@string/prompt_reply"
+            android:maxLength="50" >
+        </EditText>
+
+        <Button
+            android:id="@+id/reply_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/action_reply" />
+    </LinearLayout>
+    
+</RelativeLayout>

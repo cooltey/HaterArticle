@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reply_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal" >
+
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:layout_toRightOf="@+id/hate_type"
+	    android:orientation="vertical"
+	    android:padding="10dp" >
+
+	    <TextView
+	        android:id="@+id/content"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文"
+	        android:textSize="15sp" />
+
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+
+	        <TextView
+	            android:id="@+id/name"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentRight="true"
+	            android:layout_alignParentTop="true"
+	            android:paddingLeft="2dp"
+	            android:paddingRight="2dp"
+	            android:text="阿光"
+	            android:textSize="12sp" />
+
+	        <TextView
+	            android:id="@+id/date"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentTop="true"
+	            android:layout_toLeftOf="@+id/name"
+	            android:paddingLeft="2dp"
+	            android:paddingRight="2dp"
+	            android:text="2012-07-15 12:46:46"
+	            android:textColor="#999999"
+	            android:textSize="12sp"
+	            android:textStyle="italic" />
+	    </RelativeLayout>
+	</LinearLayout>
+
+	<TextView
+	    android:id="@+id/hate_type"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_centerVertical="true"
+	    android:text="幹"
+	    android:textSize="13sp"
+	    android:padding="5dp" 
+	    android:textColor="#FFFFFF"/>
+
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="1dp"
+	    android:layout_alignParentBottom="true"
+	    android:background="#CCCCCC" />
+
+</RelativeLayout>

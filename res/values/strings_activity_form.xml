@@ -1,0 +1,71 @@
+<resources>
+
+    <string name="title_activity_login">幹，來登入</string>
+    <string name="title_activity_register">註冊一下啊，幹</string>
+    <string name="title_activity_forgetpwd">幹，忘記密碼</string>
+    <string name="title_activity_publish">發洩怒氣</string>
+    <string name="title_activity_readarticle">譙一下啊！</string>
+    <string name="title_activity_myarticle">幹，我的文！</string>
+    <string name="title_activity_about">作者到底是誰？</string>
+    <string name="title_activity_setinfo">資料設定囉</string>
+    <string name="title_activity_userarticle">的文章</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">密碼</string>
+    <string name="prompt_password_again">再輸入一次密碼</string>
+    <string name="prompt_nickname">暱稱(註冊後無法更改)</string>
+    <string name="prompt_publish">請輸入您欲發洩的內容</string>
+    <string name="prompt_reply">請輸入幹譙內容</string>
+    <string name="action_sign_in"><b>登入</b></string>
+    <string name="action_register">註冊</string>
+    <string name="action_sign_in_short">登入</string>
+    <string name="action_register_in_short">註冊</string>
+    <string name="action_publish_in_short">發文</string>
+    <string name="action_forgot_password">忘記密碼</string>
+    <string name="login_progress_signing_in">登入中&#8230;</string>
+    <string name="login_progress_registering">註冊中&#8230;</string>
+    <string name="login_progress_publishing">發文中&#8230;</string>
+    <string name="login_progress_updating">更新中&#8230;</string>
+    <string name="login_progress_sending">寄信中&#8230;</string>
+    <string name="error_invalid_email">Email 格式錯誤</string>
+    <string name="error_invalid_password">密碼過短</string>
+    <string name="error_incorrect_password">密碼錯誤</string>
+    <string name="error_incorrect_not_match">密碼不符</string>
+    <string name="error_field_required">必填</string>
+    <string name="error_field_nickname_length">暱稱長度錯誤(1~16 個字)</string>
+    <string name="error_field_email_used">Email 已被使用</string>
+    <string name="error_field_nickname_used">暱稱已被使用</string>
+    <string name="error_field_email_not_exist">帳號不存在</string>
+    <string name="error_field_email_sending_fail">傳送信件失敗</string>
+    <string name="error_field_content_length">內容文字需大於兩個字</string>
+    <string name="error_publish">發文失敗！</string>
+    <string name="error_publish_too_many">請勿洗版！</string>
+    <string name="error_publish_no_login">您尚未登入！</string>
+    <string name="error_publish_pwd_error">密碼錯誤！</string>
+    <string name="confirm_dialog_register_content">確定要註冊？<b>Email</b>以及<b>暱稱</b>註冊後無法再修改！</string>
+    <string name="confirm_dialog_title_warning">提醒您</string>
+    <string name="confirm_dialog_yes_btn">確定</string>    
+    <string name="confirm_dialog_no_btn">取消</string>    
+    <string name="action_forgetpwd_in_short">確定</string>    
+    <string name="action_forgetpwd">確定</string>  
+    <string name="action_setinfo">確定</string> 
+    <string name="action_buy_item">增加暱稱修改次數</string>         
+    <string name="action_publish">發文</string>    
+    <string name="content_forgetpwd">請輸入您當時註冊的 Email，系統會將重新產生的暫時密碼寄送到您的信箱。收到信後請更改密碼後再重新登入。</string>    
+    <string name="success_login">登入成功！</string>   
+    <string name="success_register">註冊成功！</string>   
+    <string name="success_forgetpwd">信件傳送成功！</string>  
+    <string name="success_publish">發文成功！</string>   
+    <string name="success_setinfo">資料修改成功！</string>  
+    <string name="success_setinfo_login">資料修改成功，請重新登入。</string>      
+    <string name="content_remain_word">剩餘文字：</string>   
+    <string name="content_select_category">請選擇分類：</string>   
+    <string name="content_remain_word_lastfix">&#160;個字</string>  
+    <string name="setinfo_reg_email">您註冊的 Email</string>
+    <string name="setinfo_reg_nickname">您註冊的暱稱，可修改次數：</string>
+    <string name="setinfo_reg_go_pwd">修改密碼</string>
+    <string name="setinfo_reg_pwd">輸入新密碼</string>
+    <string name="setinfo_reg_pwd_again">請再輸入一次新密碼</string>  
+
+</resources>
