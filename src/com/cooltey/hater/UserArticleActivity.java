@@ -10,14 +10,20 @@ import org.json.JSONObject;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.cooltey.hater.MainActivity.ArticleContentAdapter;
 import com.ironsource.mobilcore.MobileCore;
 import com.viewpagerindicator.TabPageIndicator;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,28 +35,31 @@ public class UserArticleActivity extends SherlockFragmentActivity{
 	private String storedIndex;
 	
 	// category loader
-	private String categoryUrl = ""; 
+	private String categoryUrl = " "; 
 	private JSONArray categoryArray = null;
 
 	private static String[] CONTENT_ID = null;
 	private static String[] CONTENT = null;
 	
-	private String articleUrl = "";
+	private String articleUrl = " ";
 	
 	private FragmentPagerAdapter adapter;
 	private TabPageIndicator indicator;
 	private ViewPager pager;
+
+	// display view
+	private RelativeLayout enter_layout;
+	private LinearLayout   main_layout;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 
-		MobileCore.init(UserArticleActivity.this, "", MobileCore.LOG_TYPE.PRODUCTION);
-		MobileCore.getSlider().setContentViewWithSlider(UserArticleActivity.this, R.layout.activity_main);
-		
-		//setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_main);
 
+		enter_layout 	= (RelativeLayout) findViewById(R.id.enter_layout);
+		main_layout 	= (LinearLayout) findViewById(R.id.main_layout);
 		
 		SharedPreferences getStoredData = getSharedPreferences("account_info", 0);
 		
@@ -69,16 +78,39 @@ public class UserArticleActivity extends SherlockFragmentActivity{
 		}
 		setTitle(get_hm_name + getString(R.string.title_activity_userarticle));
 		
-		// create
-		getCategoryList();
 		
-	    adapter = new MyArticleContentAdapter(getSupportFragmentManager());
+		final Handler handler = new Handler() {
+        	@Override
+        	public void handleMessage(Message msg) {
+        		
+        		main_layout.setVisibility(View.VISIBLE);
+        		enter_layout.setVisibility(View.GONE);
 
-        pager = (ViewPager)findViewById(R.id.pager);
-        pager.setAdapter(adapter);
-
-        indicator = (TabPageIndicator)findViewById(R.id.indicator);
-        indicator.setViewPager(pager);
+    		    adapter = new MyArticleContentAdapter(getSupportFragmentManager());
+    	
+    	        pager = (ViewPager)findViewById(R.id.pager);
+    	        pager.setAdapter(adapter);
+    	
+    	        indicator = (TabPageIndicator)findViewById(R.id.indicator);
+    	        indicator.setViewPager(pager);
+        	}
+    	};
+    	
+    	new Thread
+		(
+	        new Runnable() 
+			{
+	        	@Override
+				public void run() 
+				{      			
+	        		main_layout.setVisibility(View.GONE);
+	        		enter_layout.setVisibility(View.VISIBLE);
+	    			// create
+	    			getCategoryList();		
+					handler.sendEmptyMessage(0);
+				}
+			}	
+         ).start(); 
         
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);

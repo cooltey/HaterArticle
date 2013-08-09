@@ -16,12 +16,18 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -36,17 +42,21 @@ public class MainActivity extends SherlockFragmentActivity{
 	private String storedIndex;
 	
 	// category loader
-	private String categoryUrl = ""; 
+	private String categoryUrl = " "; 
 	private JSONArray categoryArray = null;
 	
 	private static String[] CONTENT_ID = null;
 	private static String[] CONTENT = null;
 	
-	private String articleUrl = "";
+	private String articleUrl = " ";
 	
 	private FragmentPagerAdapter adapter;
 	private TabPageIndicator indicator;
 	private ViewPager pager;
+	
+	// display view
+	private RelativeLayout enter_layout;
+	private LinearLayout   main_layout;
 	
 	
 	@Override
@@ -55,26 +65,50 @@ public class MainActivity extends SherlockFragmentActivity{
 		
 		if(checkInternet(true)){	
 			
-			MobileCore.init(MainActivity.this, "", MobileCore.LOG_TYPE.PRODUCTION);
-			MobileCore.getSlider().setContentViewWithSlider(MainActivity.this, R.layout.activity_main);
+			setContentView(R.layout.activity_main);
 			
-			//setContentView(R.layout.activity_main);
+			enter_layout 	= (RelativeLayout) findViewById(R.id.enter_layout);
+			main_layout 	= (LinearLayout) findViewById(R.id.main_layout);
+			
 			SharedPreferences getStoredData = getSharedPreferences("account_info", 0);
 			
 			storedName 		= getStoredData.getString("hm_name", "");
 			storedPwd 		= getStoredData.getString("hm_pwd", "");
 			storedIndex 	= getStoredData.getString("hm_index", "");			
 		
-			// create
-			getCategoryList();
+			final Handler handler = new Handler() {
+	        	@Override
+	        	public void handleMessage(Message msg) {
+	        		
+	        		main_layout.setVisibility(View.VISIBLE);
+	        		enter_layout.setVisibility(View.GONE);
+
+	    		    adapter = new ArticleContentAdapter(getSupportFragmentManager());
+	    	
+	    	        pager = (ViewPager)findViewById(R.id.pager);
+	    	        pager.setAdapter(adapter);
+	    	
+	    	        indicator = (TabPageIndicator)findViewById(R.id.indicator);
+	    	        indicator.setViewPager(pager);
+	        	}
+	    	};
+	    	
+	    	new Thread
+			(
+		        new Runnable() 
+				{
+		        	@Override
+					public void run() 
+					{      			
+		        		main_layout.setVisibility(View.GONE);
+		        		enter_layout.setVisibility(View.VISIBLE);
+		    			// create
+		    			getCategoryList();		
+						handler.sendEmptyMessage(0);
+					}
+				}	
+	         ).start(); 
 			
-		    adapter = new ArticleContentAdapter(getSupportFragmentManager());
-	
-	        pager = (ViewPager)findViewById(R.id.pager);
-	        pager.setAdapter(adapter);
-	
-	        indicator = (TabPageIndicator)findViewById(R.id.indicator);
-	        indicator.setViewPager(pager);
 		}
 	}
 	

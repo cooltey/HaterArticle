@@ -70,7 +70,7 @@ public final class ArticleContentFragment extends Fragment {
     private TextView processMessageView;	
     private LinearLayout contentView;
     private UserActionTask mAuthTask = null;
-    private String  scoreUrl = "";
+    private String  scoreUrl = " ";
     
     // dialog action
     private String ha_index;
@@ -343,7 +343,7 @@ public final class ArticleContentFragment extends Fragment {
     
     public class EndlessScrollListener implements OnScrollListener {
 
-        private int visibleThreshold = 0;
+        private int visibleThreshold = 5;
         private LayoutInflater einflater;
         private ViewGroup econtainer;
         private ListView elayout;

@@ -51,7 +51,7 @@ public class articleListAdapter extends BaseAdapter {
 	private TextView score_btn;
 	private View score_dialog_vi;
     
-    private String scoreListUrl = "";
+    private String scoreListUrl = " ";
     private JSONArray scoreArray = null;
     
     public articleListAdapter(ViewGroup c, LayoutInflater layoutInflater, JSONArray j, int t) {
@@ -159,11 +159,12 @@ public class articleListAdapter extends BaseAdapter {
 					        Animation animation = null;
 					        animation = AnimationUtils.loadAnimation(container.getContext(), R.anim.push_up_in);
 		
-					        animation.setDuration(1000);
+					        animation.setDuration(500);
 					        vi.startAnimation(animation);
 							animationCounter[position] = 1;
 					        animation = null;
-			        	}*/
+			        	}
+			        */
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
