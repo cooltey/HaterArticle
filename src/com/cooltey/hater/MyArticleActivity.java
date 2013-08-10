@@ -46,19 +46,12 @@ public class MyArticleActivity extends SherlockFragmentActivity{
 	private TabPageIndicator indicator;
 	private ViewPager pager;
 	
-	// display view
-	private RelativeLayout enter_layout;
-	private LinearLayout   main_layout;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_main);
-		
-		enter_layout 	= (RelativeLayout) findViewById(R.id.enter_layout);
-		main_layout 	= (LinearLayout) findViewById(R.id.main_layout);
-		
+				
 		SharedPreferences getStoredData = getSharedPreferences("account_info", 0);
 		
 		storedName 		= getStoredData.getString("hm_name", "");
@@ -66,38 +59,14 @@ public class MyArticleActivity extends SherlockFragmentActivity{
 		storedIndex 	= getStoredData.getString("hm_index", "");
 		
         
-        final Handler handler = new Handler() {
-        	@Override
-        	public void handleMessage(Message msg) {
-        		
-        		main_layout.setVisibility(View.VISIBLE);
-        		enter_layout.setVisibility(View.GONE);
+		getCategoryList();
+	    adapter = new MyArticleContentAdapter(getSupportFragmentManager());
 
-    		    adapter = new MyArticleContentAdapter(getSupportFragmentManager());
-    	
-    	        pager = (ViewPager)findViewById(R.id.pager);
-    	        pager.setAdapter(adapter);
-    	
-    	        indicator = (TabPageIndicator)findViewById(R.id.indicator);
-    	        indicator.setViewPager(pager);
-        	}
-    	};
-    	
-    	new Thread
-		(
-	        new Runnable() 
-			{
-	        	@Override
-				public void run() 
-				{      			
-	        		main_layout.setVisibility(View.GONE);
-	        		enter_layout.setVisibility(View.VISIBLE);
-	    			// create
-	    			getCategoryList();		
-					handler.sendEmptyMessage(0);
-				}
-			}	
-         ).start(); 
+        pager = (ViewPager)findViewById(R.id.pager);
+        pager.setAdapter(adapter);
+
+        indicator = (TabPageIndicator)findViewById(R.id.indicator);
+        indicator.setViewPager(pager);
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
@@ -199,7 +168,7 @@ public class MyArticleActivity extends SherlockFragmentActivity{
             return true;
 	        case R.id.action_refresh:	
 	        		        	
-	        	Toast.makeText(getApplicationContext(), getString(R.string.btn_updating), 1000).show();
+	        	//Toast.makeText(getApplicationContext(), getString(R.string.btn_updating), 1000).show();
 
 	        	int getCurrentID = pager.getCurrentItem();
 	        	adapter = new MyArticleContentAdapter(getSupportFragmentManager());

@@ -54,22 +54,22 @@ public class MainActivity extends SherlockFragmentActivity{
 	private TabPageIndicator indicator;
 	private ViewPager pager;
 	
+
 	// display view
 	private RelativeLayout enter_layout;
 	private LinearLayout   main_layout;
-	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		if(checkInternet(true)){	
-			
+		
 			setContentView(R.layout.activity_main);
 			
 			enter_layout 	= (RelativeLayout) findViewById(R.id.enter_layout);
 			main_layout 	= (LinearLayout) findViewById(R.id.main_layout);
-			
+
 			SharedPreferences getStoredData = getSharedPreferences("account_info", 0);
 			
 			storedName 		= getStoredData.getString("hm_name", "");
@@ -93,21 +93,22 @@ public class MainActivity extends SherlockFragmentActivity{
 	        	}
 	    	};
 	    	
-	    	new Thread
-			(
-		        new Runnable() 
-				{
-		        	@Override
-					public void run() 
-					{      			
-		        		main_layout.setVisibility(View.GONE);
-		        		enter_layout.setVisibility(View.VISIBLE);
-		    			// create
-		    			getCategoryList();		
-						handler.sendEmptyMessage(0);
-					}
-				}	
-	         ).start(); 
+
+    		main_layout.setVisibility(View.GONE);
+    		enter_layout.setVisibility(View.VISIBLE);
+	    	
+	    	
+			handler.postDelayed(new Runnable() 
+			{		
+	        	@Override
+				public void run() 
+				{      			
+	    			// create
+	    			getCategoryList();		
+					handler.sendEmptyMessage(0);
+				}
+			}, 1000);
+				
 			
 		}
 	}
@@ -197,7 +198,7 @@ public class MainActivity extends SherlockFragmentActivity{
 	    switch (item.getItemId()) {
 	        case R.id.action_refresh:	
 	        		        	
-	        	Toast.makeText(getApplicationContext(), getString(R.string.btn_updating), 1000).show();
+	        	//Toast.makeText(getApplicationContext(), getString(R.string.btn_updating), 1000).show();
 
 	        	int getCurrentID = pager.getCurrentItem();
 	        	adapter = new ArticleContentAdapter(getSupportFragmentManager());

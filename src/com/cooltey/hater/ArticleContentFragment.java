@@ -142,6 +142,9 @@ public final class ArticleContentFragment extends Fragment {
         	}
     	};
     	
+
+		showProgress(true, article_processView, listview_layout);
+    	
     	new Thread
 		(
 	        new Runnable() 
@@ -149,7 +152,6 @@ public final class ArticleContentFragment extends Fragment {
 	        	@Override
 				public void run() 
 				{      					
-	        		showProgress(true, article_processView, listview_layout);
 			        articleLoader(1);
 					handler.sendEmptyMessage(0);
 				}
